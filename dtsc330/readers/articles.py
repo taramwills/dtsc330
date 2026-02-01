@@ -33,6 +33,8 @@ class Articles():
         self.article_df = pd.DataFrame(articles)
         self.author_df = pd.DataFrame(authors)
 
+        print(self.article_df.columns)
+
     def _parse_article(self, article: ET.Element):
         """Parse an XML PubmedArticle element"""
         row = {}
