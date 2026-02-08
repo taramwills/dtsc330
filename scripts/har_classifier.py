@@ -32,16 +32,14 @@ Convert timestamp column to a TimedeltaIndex so that pandas resample() can be ap
 full_df.index = pd.to_timedelta(full_df['timestamp'], unit = 's')
 
 """
-Get unique participant identifiers so that features
-are computed separately for each person.
+Get unique participant identifiers so that features are computed separately for each person.
 """
 people = pd.unique(full_df['person'])
 
 """
 Lists to store per-person training and testing data.
 
-Each element in these lists is a DataFrame (features)
-or Series (labels) corresponding to one participant.
+Each element in these lists is a DataFrame (features) or Series (labels) corresponding to one participant.
 """
 features, labels, test_features, test_labels = [], [], [], []
 
@@ -66,9 +64,9 @@ for person in people:
     df = df.sort_index()
 
     """
-    Resample data into 60-second intervals and select the first observation in each interval.
+    Resample data into 10-second intervals and select the first observation in each interval.
     """
-    df = df.resample('60s').first().dropna()
+    df = df.resample('10s').first().dropna()
 
     """
     Separate predictor variables (features) and target variable (sleep labels).

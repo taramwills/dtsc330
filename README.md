@@ -28,3 +28,18 @@ The dates for Articles are problematic. Can you fix them?
     - If PubDate tag: extra loop
         ○ If tags are month, day, year: save into variable
 Format into year-month-day
+
+# HW 3
+- Read in har (first 10 participants) and reusable classifier files
+- Converted the timestamp data into a timeseries so that I could resample the data
+- Determined unique participants
+- For each person, computed acceleration magnitude using acc_x, acc_y, acc_y
+- Resampled into 10 or 60 second intervals
+- Determined features (acc_mag) and labels (is_sleep)
+- Used first participants as test set and remaining in training set
+- After loop, read in classifier using random forest model type
+- Train features and labels
+- Predict test features
+- Print out accuracy
+- 60s: 0.5862884160756501
+- 10s: 0.6007462686567164
