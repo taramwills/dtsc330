@@ -53,6 +53,6 @@ Accuracy: 0.615257048092869
 60s:
 Correct: 242 / 423
 Accuracy: 0.5721040189125296
-The 10s interval became slight more accurate and the 60s interval became slightly less accurate.
+The 10s interval became slightly more accurate and the 60s interval became slightly less accurate.
 
 ![Machine learning diagram](actual-machine-learning-diagram.png)
