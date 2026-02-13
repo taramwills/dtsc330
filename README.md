@@ -43,3 +43,14 @@ Format into year-month-day
 - Print out accuracy
 - 60s: 0.5862884160756501
 - 10s: 0.6007462686567164
+
+# HW 4
+After implementing XGBoost to my reusable classifier, these are the new accuracies:
+10s: 
+Correct: 1484 / 2412
+Accuracy: 0.615257048092869
+
+60s:
+Correct: 242 / 423
+Accuracy: 0.5721040189125296
+The 10s interval became slight more accurate and the 60s interval became slightly less accurate.
