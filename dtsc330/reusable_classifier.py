@@ -4,9 +4,9 @@ functions share the same data, which suggests we should use:
 """
 import numpy as np
 import sklearn
+import xgboost
 
-# NOTE: We can use a custom classifier, but most classiifers are 
-# implemented well.
+# NOTE: We can use a custom classifier, but most classiifers are implemented well.
 # Common classifiers (though not the best) are in scikit-learn
 # Some of the best ones are their own, such as xgboost
 
@@ -34,6 +34,8 @@ class ReusableClassifier:
             self.model = sklearn.linear_model.LogisticRegression()
         if self.model_type == 'random_forest':
             self.model = sklearn.ensemble.RandomForestClassifier()
+        if self.model_type == 'xgboost':
+            self.model = xgboost.XGBClassifier()
 
         # We NEED to scale the data for regression
         # we can use a StandardScaler to make it normal
@@ -64,11 +66,11 @@ class ReusableClassifier:
         # If you ask how well the model did on the training data
         # that's different from how well the model performs
         # No statistician will accept it
-        train_features, test_features, train_labels, test_labels = sklearn.model_selection.train_test_split(features, labels, test_size=0.2, random_state=random_number)
+        train_features, test_features, train_labels, test_labels = sklearn.model_selection.train_test_split(features, labels, test_size = 0.2, random_state = random_number)
         self.train(train_features, train_labels)
 
         predictions = self.predict(test_features)
-        return 1 + np.sum(predictions.astype(float) - test_labels.to_numpy().astype(float))/len(test_labels)
+        return 1 + np.sum(predictions.astype(float) - test_labels.to_numpy().astype(float)) / len(test_labels)
 
     def save(self, path: str):
         """Save our model to the location path."""
@@ -79,4 +81,4 @@ class ReusableClassifier:
         pass
 
 if __name__ == '__main__':
-    rc = ReusableClassifier()
+    rc = ReusableClassifier(model_type = 'xgboost')

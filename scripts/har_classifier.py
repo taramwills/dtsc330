@@ -66,7 +66,7 @@ for person in people:
     """
     Resample data into 10-second intervals and select the first observation in each interval.
     """
-    df = df.resample('10s').first().dropna()
+    df = df.resample('60s').first().dropna()
 
     """
     Separate predictor variables (features) and target variable (sleep labels).
@@ -89,7 +89,7 @@ Train classifier using combined training data.
 
 Manual splitting is used instead of train_test_split to ensure participant-level separation.
 """
-classifier = reusable_classifier.ReusableClassifier('random_forest')
+classifier = reusable_classifier.ReusableClassifier('xgboost')
 classifier.train(pd.concat(features), pd.concat(labels))
 
 """
